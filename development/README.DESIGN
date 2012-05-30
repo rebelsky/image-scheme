@@ -1,0 +1,48 @@
+Some design notes on the image-scheme library.
+
+Goals:
+* We can describe images using the various techniques we employ in 
+  Mediascheme, including
+  * GIMP tools
+  * Drawings as objects
+  * Turtles
+  * image-compute
+  * Existing images
+* We can easily combine and manipulate these different kinds of images
+  Minimally, we should support
+  * Render as a new image (typically, as a GIMP image)
+  * Render on an existing image
+  * Horizonatlly compose two or more images
+  * Vertically compose two or more images
+  * Rotate an image 
+  * Overlay one image on another (this will probably wait until later)
+  * Scale
+* Message - Hmmm ... should these be pure?
+  * :rotate! - rotates 90 degrees clockwise.  (What does this rotate around?
+    Probably the center, whatever that means.)
+  * :hscale! amount - scales horizontally
+  * :vscale! amount - scales vertically
+  * :hcompose img1 ... imgn - horizontally compose some images
+  * :vcompose img1 ... imgn - vertically compose some images
+* We should also provide query methods
+  * :left - the lowest x coordinate
+  * :top - the lowest y coordinate
+  * :width - the width
+  * :height - the height
+
+Techniques
+* We will represent each kind of image as an object that responds to
+  each of the basic commands
+* Most objects will have a list of parameters that we can then apply
+  these same operations to
+  * Coordinate (x,y)
+  * Dimension (width,height)
+  * Value (anything) - won't be modified
+* For these objects, we can also return the :value value
+* For many of the drawing objects, we will store a function that can
+  generate the image.  (Maybe that's the "render" function.)
+ 
+Issues
+* Should I make the scale and such mutators or should I have them create
+  new objects?  (It seems that my standard pure programming style
+  suggests the latter.)
