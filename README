@@ -1,0 +1,10 @@
+At SIGCSE a year or two ago, Brian Harvey looked at my work on the
+MediaScripting project and said (approximately): "Sam, you have a
+variety of models of images, which is good in some respects, but
+bad in others.  Can't you merge all of them so that they can be
+combined in the 'Drawings as Images' model?"
+
+This project is my exploration of Brian's question.
+
+Right now, the project is designed to be run primarily in 
+MediaScheme/GIMP.  I will explore other ways to use it soon.
